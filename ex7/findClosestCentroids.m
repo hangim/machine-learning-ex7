@@ -20,13 +20,17 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
-
-
-
-
-
-
-
+for i = 1 : size(X, 1)
+    minn = -1;
+    for j = 1 : K
+        mat = X(i, :) - centroids(j, :);
+        tmp = mat * mat';
+        if idx(i) == 0 || tmp < minn
+            minn = tmp;
+            idx(i) = j;
+        end
+    end
+end
 % =============================================================
 
 end
